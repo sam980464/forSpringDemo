@@ -1,0 +1,127 @@
+<%@page import="com.bo.*"%>
+<%@page import="com.dao.*"%>
+<%@page import="java.util.*"%>
+<%@page import="com.project.bean.*"%>
+<%@page import="com.project.dao.*"%>
+<%
+
+java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
+%>
+
+
+<style>
+.stdform select {
+    width: 250px;
+}
+
+</style>
+
+
+<script type="text/javascript">
+
+
+function  calculate()
+{
+	
+
+}
+</script>
+
+
+<h4 class="widgettitle">Add Buyer for <b>Project</b></h4>
+ <form class="stdform stdform2" method="get" action="ActionServlet" onsubmit="return checkOverflow()">
+					<table width="100%" border="1" class="tbl">
+					  <tr>
+						<td>
+							<span>Buyer Name</span>
+							<div>
+					<!-- 		<select name="buyer"  onchange="loadEstimate()" id="buyer" class="uniformselect" >
+							<option value="0">Choose Buyer</option>
+<%/*
+	ArrayList<BuyerBean> itemPartList=null;
+	ArrayList<AddBuyerToProjectBean> allbuyer=null;
+	String flag="false";
+	Iterator<BuyerBean> testIt;
+	BuyerBean buyerbean;
+	try{
+		
+		itemPartList=new Buyer().getAllBuyer("all",""); 
+		allbuyer = new AddBuyerToProject().getAllBuyer("all",(String)session.getAttribute("project_id"));
+		if(itemPartList != null){
+			testIt = itemPartList.iterator();
+			while(testIt.hasNext()){
+				buyerbean = (BuyerBean)testIt.next();*/
+%>								
+<option 
+	<%/*
+	if(allbuyer.size()>0){
+	for(int i=0;i<allbuyer.size();i++){
+	if(allbuyer.get(i).getBuyer_id().equals(""+buyerbean.getBuyer_id())){
+	flag="false";
+	break;
+	}else{
+	flag="true";
+	}
+	}}else{flag="true";}
+	if(flag.equals("false")){*/
+	 %>
+	 
+	value="<%=//buyerbean.getBuyer_id()%>" disabled="disabled">
+		<%=//buyerbean.getBuyer_name()%>
+</option><%// }else{ %>
+      value="<%=//buyerbean.getBuyer_id()%>" >
+		<%=//buyerbean.getBuyer_name()%>
+</option>
+<%/*}
+	
+		}
+	}}
+	catch(Exception e){
+		
+		e.printStackTrace();
+	}*/
+%>  
+							</select>
+						 -->	
+							</div>
+						</td>
+						<td>
+							<span>Estimate Amount</span>
+							<div>
+							<input id="estamnt" class="input-small" type="text"  name="estamnt">
+							<input type="hidden" id="pro_id" name="pro_id" value="<%=(String)session.getAttribute("project_id") %>">
+							</div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>
+							<span>Paid Amount</span>
+							<div>
+							<input id="pamamnt" class="input-small" type="text"  name="pamamnt"  placeholder="0.0">
+														</div>
+						</td>
+						<td>
+							<span>Date</span>
+							<div>
+							<input type="text" value="<%=df.format(new java.util.Date())%>" class="input-small datepicker hasDatepicker" name="datecreated" id="datepicker">
+							<b>[YYYY-MM-DD]</b>
+							</div>
+						</td>
+						  </tr>
+						<tr>
+						<td>
+							<span>Note</span>
+							<textarea  name="note" rows="" cols=""></textarea>
+						</td>
+					  </tr>
+					</table>		                      
+					<p class="stdformbutton">
+					
+						<input type="hidden" name="todo" value="addbuyerforproject">
+						<input type="hidden" name="userid" value="">
+						<button class="btn btn-primary">Save</button>
+						<button type="reset" class="btn">Reset Button</button>
+					</p>
+<div id="getOnOrderStatusdiv" style="height: 59px;"></div>	
+
+</form>

@@ -1,0 +1,11 @@
+.settings/
+target/
+pom.xml.releaseBackup
+release.properties
+.project
+.classpath
+*~
+test-output/
+.idea/
+*.iml
+*.goutputstream*

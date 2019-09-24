@@ -1,0 +1,32 @@
+<configuration>
+
+	<property name="LOGS" value="./logs" />
+
+    <conversionRule conversionWord="threadId"
+                    converterClass="com.util.ThreadIdPatternConverter" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+       <file>${LOGS}/rtech_application.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/rtech_application.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <maxHistory>10</maxHistory>
+          
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%date %level [%file:%line] [%threadId] %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">    
+    <encoder>
+        <pattern>%date %level [%file:%line] [%threadId] %msg%n</pattern>
+    </encoder>
+  </appender>
+     
+    
+     <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>

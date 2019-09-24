@@ -1,0 +1,30 @@
+<%@page import="com.bo.*"%>
+<%@page import="com.dao.*"%>
+<%@page import="java.util.*"%>
+
+
+<div class="row-fluid">
+	<div class="widgetbox">
+		<h4 class="widgettitle">Add Office Expenses Item</h4>
+		<div class="widgetcontent nopadding">
+			<form class="stdform stdform2" method="post" action="ActionServlet">
+				<table width="100%" border="1" class="tbl">
+					<tr>
+						<td><span>Item Name</span>
+							<div>
+								<input type="text" value="" name="i_name">
+							</div>
+						</td>
+					</tr>
+				</table>
+				<p class="stdformbutton">
+					<input type="hidden" name="todo" value="addOfficeExpensesItem"> 
+					<button class="btn btn-primary">Save</button>
+					<button type="reset" class="btn">Reset Button</button>
+				</p>
+			</form>
+		</div>
+		<!--widgetcontent-->
+	</div>
+</div>
+<!--row-fluid-->

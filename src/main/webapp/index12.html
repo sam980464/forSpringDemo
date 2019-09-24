@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://www.extracoding.com/demo/adminise/login1.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>RTECH Login Panel</title>
+<!--// Stylesheets //-->
+<link href="http://www.extracoding.com/demo/adminise/assets/css/style.css" rel="stylesheet" media="screen">
+<link href="http://www.extracoding.com/demo/adminise/assets/css/bootstrap.css" rel="stylesheet" media="screen">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script async="" src="./Adminise - Clean And Corporate Admin Panel Template_files/analytics.js"></script><script async="" src="./Adminise - Clean And Corporate Admin Panel Template_files/analytics.js"></script><script type="text/javascript" src="./Adminise - Clean And Corporate Admin Panel Template_files/jquery.js"></script>
+<script type="text/javascript" src="./Adminise - Clean And Corporate Admin Panel Template_files/bootstrap.min.js"></script>
+<script type="text/javascript" src="./Adminise - Clean And Corporate Admin Panel Template_files/icheck.min.js"></script>
+<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<!-- Wrapper Start -->
+<div class="loginwrapper">
+	<span class="circle"></span>
+	<div class="loginone">
+    	<header>
+        	<a href="http://www.extracoding.com/demo/adminise/dashboard1.html"><img src="./Adminise - Clean And Corporate Admin Panel Template_files/logo.png" alt=""></a>
+            <p>Enter your credentials to login to your account1</p>
+        </header>
+        <form id="login" action="ActionServlet" method="post">
+         <input type="hidden" name="todo" value="login">
+        	<div class="username">
+        		<input type="text" class="form-control" name="username" id="username" placeholder="Enter your username">
+                <i class="glyphicon glyphicon-user"></i>
+            </div>
+            <div class="password">
+            	<input type="password" class="form-control" name="password" id="password" placeholder="Enter your password">
+                <i class="glyphicon glyphicon-lock"></i>
+            </div>
+            <div class="custom-radio-checkbox">
+                <div class="icheckbox_flat-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input tabindex="1" type="checkbox" class="bluecheckradios" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                <label>Remember me</label>
+            </div>
+			<script>
+				$(document).ready(function(){
+				  $('.bluecheckradios').iCheck({
+					checkboxClass: 'icheckbox_flat-blue',
+					radioClass: 'iradio_flat-blue',
+					increaseArea: '20%' // optional
+				  });
+				});  	
+			</script>
+            <input type="submit" class="btn btn-primary style2" value="Sign In">
+        </form>
+        <footer>
+        	<a href="http://www.extracoding.com/demo/adminise/login1.html#" class="forgot pull-left">I forgot my password</a>
+            <a href="http://www.extracoding.com/demo/adminise/login1.html#" class="register pull-right">Create account</a>
+            <div class="clear"></div>
+        </footer>
+    </div>
+</div>
+<!-- Wrapper End -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','','ga');
+
+  ga('create', 'UA-42761673-1', 'extracoding.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</body></html>

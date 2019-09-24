@@ -1,0 +1,419 @@
+<%@page import="com.bo.*"%>
+<%@page import="com.dao.*"%>
+<%@page import="java.util.*"%>
+
+
+<style>
+
+.stdform select {
+    background: none repeat scroll 0 0 #D9271D;
+    border: 1px solid #BBBBBB;
+    color: #FFFFFF;
+    padding: 5px 2px;
+    width: 220px;
+}
+</style>
+
+<%
+Client client= new Client();
+int cid= Integer.parseInt(request.getParameter("cid"));
+java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd"); 
+String client_name=client.getClientNameById(cid);
+%>
+
+<h4 class="widgettitle">Edit Property Details of :<b> <%=client_name %></b></h4>
+ <form class="stdform stdform2" method="post" action="ActionServlet">
+ 
+ <%-- <select>
+<%
+int cid= Integer.parseInt(request.getParameter("cid"));
+ 
+ArrayList<EstimateBO> estimateList=null;
+Iterator<EstimateBO> estimateIt;
+EstimateBO estimateItem;
+try{
+	Estimate estimate= new Estimate();
+	estimateList=estimate.getAllItem(cid);
+	
+	if(estimateList != null){
+		estimateIt = estimateList.iterator();
+		while(estimateIt.hasNext()){
+			estimateItem = (EstimateBO)estimateIt.next();
+%>
+
+<option>
+<% Scheme scheme= new Scheme(); %>
+<%=scheme.getSchemeNameById(estimateItem.getSchemeId())%>
+:  [  <%=estimateItem.getAmount() %>  ]
+</option>
+
+<%
+	
+		}
+	}}
+	catch(Exception e){
+		
+		e.printStackTrace();
+	}
+%>
+ </select> --%>
+ 
+ 
+ 
+ <%
+	ArrayList<PropertyDetailsBO> propertyDetailsList=null;
+	Iterator<PropertyDetailsBO> propertyDetailsIt;
+	PropertyDetailsBO propertyDetailsBO;
+	try{
+		PropertyDetails PropertyDetails= new PropertyDetails();
+		propertyDetailsList=PropertyDetails.getAllItem(cid);
+		
+		if(propertyDetailsList != null){
+			propertyDetailsIt = propertyDetailsList.iterator();
+			while(propertyDetailsIt.hasNext()){
+				propertyDetailsBO = (PropertyDetailsBO)propertyDetailsIt.next();
+%> 
+
+					<table width="100%" border="1" class="tbl">
+					  <tr>
+						<td colspan=2>
+							<span>Mouja</span>
+							<div>
+								<select name="mouja" id="mouja" class="uniformselect" required="required">
+								<option value="0">Select Mouja</option>
+<%
+	ArrayList<MoujaBO> moujaList=null;
+	Iterator<MoujaBO> moujaIt;
+	MoujaBO moujaBO;
+	try{
+		Mouja mouja= new Mouja();
+		moujaList=mouja.getAllItem();
+		if(moujaList != null){
+			moujaIt = moujaList.iterator();
+			while(moujaIt.hasNext()){
+				moujaBO = (MoujaBO)moujaIt.next();
+%> 
+	<option
+	
+	<%
+	if(Integer.parseInt(propertyDetailsBO.getMouja())==moujaBO.getId())
+	{
+		out.print("selected='selected'");
+	}
+	%>
+	
+	 value="<%=moujaBO.getId() %>"><%=moujaBO.getMoujaName() %></option>
+
+<%	
+		}
+	}}
+	catch(Exception e){
+		
+		e.printStackTrace();
+	}
+%>
+
+								
+								</select>
+							</div>
+						</td>
+						<td colspan=2>
+							<span>Dag No</span>
+							<div>
+								<input type="text" value="<%=propertyDetailsBO.getDag_no() %>" name="dag_no" id="dag_no" class="input-large" required="required" />
+							</div>
+						</td>
+					  </tr>
+					  <tr>
+						<td colspan=2>
+							<span>Khatian No</span>
+							<div>
+								<input type="text" value="<%=propertyDetailsBO.getKhatian_no() %>" name="khatian" id="khatian" class="input-large" required="required" />
+							</div>
+						</td>
+						<td colspan=2>
+							<span>J.L. No</span>
+							<div>
+								<input type="text" value="<%=propertyDetailsBO.getJl_no() %>" name="jl_no" id="ja_no" class="input-large" required="required" />
+							</div>
+						</td>
+					  </tr>
+					  <tr>
+						<td colspan=2>
+							<span>Touji No</span>
+							<div>
+								<input type="text" value="<%=propertyDetailsBO.getTouji_no() %>" name="touji" id="touji" class="input-large" required="required" />
+							</div>
+						</td>
+						<td colspan=2>
+							<span>Word No</span>
+							<div>
+								<input type="text" value="<%=propertyDetailsBO.getWord_no() %>" name="word" id="word" class="input-large" required="required" />
+							</div>
+						</td>
+					  </tr>
+					  <tr>
+						<td colspan=2>
+							<span>Police Station</span>
+							<div>
+								<select name="police" id="police" class="uniformselect" required="required">
+								<option value="0">Select Police Station</option>
+<%
+	ArrayList<PoliceStationBO> policeStationList=null;
+	Iterator<PoliceStationBO> policeStationIt;
+	PoliceStationBO policeStationBO;
+	try{
+		PoliceStation policeStation= new PoliceStation();
+		policeStationList=policeStation.getAllItem();
+		if(policeStationList != null){
+			policeStationIt = policeStationList.iterator();
+			while(policeStationIt.hasNext()){
+				policeStationBO = (PoliceStationBO)policeStationIt.next();
+%>
+	<option
+	
+	<%
+	if(propertyDetailsBO.getPolice_station()==policeStationBO.getId())
+	{
+		out.print("selected='selected'");
+	}
+	
+	%>
+	
+	
+	 value="<%=policeStationBO.getId() %>"><%=policeStationBO.getPoliceStationName() %></option>
+<%	
+		}
+	}}
+	catch(Exception e){
+		
+		e.printStackTrace();
+	}
+%>
+
+								
+								</select>
+							</div>
+						</td>
+						<td colspan=2>
+							<span>District</span>
+							<div>
+								<select name="district" id="district" class="uniformselect" required="required">
+								<option value="0">Select District</option>
+<%
+	ArrayList<DistrictBO> districtList=null;
+	Iterator<DistrictBO> districtIt;
+	DistrictBO districtBO;
+	try{
+		District district= new District();
+		districtList=district.getAllItem();
+		if(districtList != null){
+			districtIt = districtList.iterator();
+			while(districtIt.hasNext()){
+				districtBO = (DistrictBO)districtIt.next();
+%> 
+<option
+
+<%
+	if(propertyDetailsBO.getDistrict()==districtBO.getId())
+	{
+		out.print("selected='selected'");
+	}
+	
+	%>
+
+ value="<%=districtBO.getId() %>"><%=districtBO.getDistrictName() %></option>
+
+ <%
+	
+		}
+	}}
+	catch(Exception e){
+		
+		e.printStackTrace();
+	}
+%>  
+							
+								
+								</select>
+							</div>
+						</td>
+					  </tr>
+					  <tr>
+						<td colspan=2>
+							<span>Bigha</span>
+							<div>
+								<input type="text" value="<%=String.format("%.2f", propertyDetailsBO.getBigha())%>" name="bigha" id="bigha" class="input-large" required="required" />
+							</div>
+						</td>
+						<td colspan=2>
+							<span>Sq. Ft.</span>
+							<div>
+								<input type="text" value="<%=String.format("%.2f", propertyDetailsBO.getSq_ft())%>" name="sq_ft" id="sq_ft" class="input-large" required="required" />
+							</div>
+						</td>
+					  </tr>
+					  <tr>
+						<td colspan=2>
+							<span>Katha</span>
+							<div>
+								<input type="text" value="<%=String.format("%.2f", propertyDetailsBO.getKatha())%>" name="katha" id="katha" class="input-large" required="required" />
+							</div>
+						</td>
+						<td colspan=2>
+							&nbsp;
+						</td>
+					  </tr>
+					  <tr>
+						<td colspan=2>
+							<span>Chatak</span>
+							<div>
+								<input type="text" value="<%=String.format("%.2f", propertyDetailsBO.getChatak())%>" name="chatak" id="chatak" class="input-large" required="required" />
+							</div>
+						</td>
+						<td colspan=2>
+							&nbsp;
+						</td>
+					  </tr>
+					  <tr>
+						<td colspan=2>
+							<span>Date Of Deposit</span>
+							<div>
+								<input type="text"  value="<%=propertyDetailsBO.getDate_of_deposit() %>"  name="date_of_deposit" id="date_of_deposit" class="input-large" required="required" />
+							</div>
+						</td>
+						<td colspan=2>
+							<span>Date Of Sanction</span>
+							<div>
+								<input type="text" value="<%=propertyDetailsBO.getDate_of_sanction() %>" name="date_of_sanction" id="date_of_sanction" class="input-large" required="required" />
+							</div>
+						</td>
+					  </tr>
+					   <tr>
+						<td colspan=2>
+							<span>Remarks</span>
+							<div>
+								<textarea name="remarks"><%=propertyDetailsBO.getRemarks() %></textarea>
+							</div>
+						</td>
+						<td colspan=2>
+							&nbsp;
+						</td>
+					  </tr>
+					</table>	
+
+
+  <%
+	
+		}
+	}}
+	catch(Exception e){
+		
+		e.printStackTrace();
+	}
+%> 
+					                      
+					<p class="stdformbutton">
+						<input type="hidden" name="todo" value="updateClientProperty">
+						<input type="hidden" name="cid" value="<%=cid %>">
+						<button class="btn btn-primary">Update</button>
+						<button type="reset" class="btn">Reset Button</button>
+					</p>
+                    </form>
+
+
+<script type="text/javascript" src="resources/js/jquery-1.10.2.js"></script>
+<script>
+$(function() {
+    $('#bigha,#katha,#chatak,#sq_ft').blur(function(e) {
+       // if(e.which == 13) {
+            calculate();
+       // }
+    });
+});
+
+$("#bigha,#katha,#chatak,#sq_ft").keydown(function(event) {
+	// Allow: backspace, delete, tab, escape, enter and .
+	if ( $.inArray(event.keyCode,[46,8,9,27,13,190]) !== -1 ||
+		 // Allow: Ctrl+A
+		(event.keyCode == 65 && event.ctrlKey === true) || 
+		 // Allow: home, end, left, right
+		(event.keyCode >= 35 && event.keyCode <= 39)) {
+			 // let it happen, don't do anything
+			 return;
+	}
+	else {
+		// Ensure that it is a number and stop the keypress
+		if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
+			event.preventDefault(); 
+		}   
+	}
+});
+
+function calculate()
+	{
+	var cur_bigha=0.00;
+	var cur_katha=0.00;
+	var cur_chatak=0.00;
+	var cur_sq_ft=0.00;
+	var cur_total_sq_ft=0.00;
+	var cur_total_sq_mtr=0.00;
+		
+	var bigha=0.00;
+	var katha=0.00;
+	var chatak=0.00;
+	var sq_ft=0.00;
+	var total_sq_ft=0.00;
+	var total_sq_mtr=0.00;
+	
+
+	
+	if(cur_sq_ft>=44)
+		{
+		cur_sq_ft=parseInt($('#sq_ft').val());
+		cur_chatak=parseInt($('#chatak').val());
+		sq_ft=cur_sq_ft%44;
+		chatak=(cur_chatak+(cur_sq_ft-sq_ft)/44);
+		$('#chatak').val(chatak);
+		$('#sq_ft').val(sq_ft);
+		
+		}
+	
+	if(cur_chatak>=15)
+		{
+		cur_katha=parseInt($('#katha').val());
+		cur_chatak=parseInt($('#chatak').val());		
+		chatak=cur_chatak%15;
+		katha=(cur_katha+(cur_chatak-chatak)/15);
+		$('#katha').val(katha);
+		$('#chatak').val(chatak);
+		}
+
+	if(cur_katha>=19)
+		{
+		cur_katha=parseInt($('#katha').val());
+		cur_bigha=parseInt($('#bigha').val());		
+		katha=cur_katha%19;
+		bigha=(cur_bigha+(cur_katha-katha)/19);
+		$('#katha').val(katha);
+		$('#bigha').val(bigha);
+		}
+
+	
+	/* bigha=parseInt($('#bigha').val());
+	katha=parseInt($('#katha').val());
+	chatak=parseInt($('#chatak').val());
+	sq_ft=parseInt($('#sq_ft').val()); */
+	
+	total_sq_ft=(20*720*bigha);
+	total_sq_ft=total_sq_ft+(720*katha);
+	total_sq_ft=total_sq_ft+(45*chatak);
+	total_sq_ft=total_sq_ft+sq_ft;
+	$('#total_sq_ft').val(total_sq_ft);
+	
+	total_sq_mtr=total_sq_ft/10.764;
+	$('#total_sq_mtr').val(total_sq_mtr);
+	
+	
+	}
+</script>

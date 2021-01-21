@@ -14,7 +14,7 @@
 	<description>Spring Boot Traditional Sample</description>
 	<properties>
 		<main.basedir>${basedir}/../..</main.basedir>
-		<jackson.version>2.6.7</jackson.version>
+		<jackson.version>2.12.1</jackson.version>
 		 <tomcat.version>7.0.59</tomcat.version>
 		<m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
 	</properties>
